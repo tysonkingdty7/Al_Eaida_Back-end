@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Al_Eaida_Domin.Modules
 {
-    public class MedicalVisit
+    public class MedicalVisit : BaseEntity
     {
-
-        public int Id { get; set; }
+     
         public DateTime VisitDate { get; set; } = DateTime.UtcNow;
         public string? Diagnosis { get; set; }
         public string? Notes { get; set; }
 
-        public int PatientId { get; set; }
+        public Guid PatientId { get; set; }
         public virtual Patient Patient { get; set; }
 
         public string UserID { get; set; }

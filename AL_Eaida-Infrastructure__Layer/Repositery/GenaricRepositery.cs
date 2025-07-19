@@ -14,9 +14,12 @@ namespace AL_Eaida_Infrastructure__Layer.IRepositery
             _dbSet = _context.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync(int pageNumber, int pageSize)
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet.Skip((pageNumber - 1) * pageSize)
+                                .Take(pageSize)
+                                .ToListAsync();
+         
         }
 
         public async Task<T?> GetByIdAsync(object id)
@@ -43,6 +46,9 @@ namespace AL_Eaida_Infrastructure__Layer.IRepositery
             await _context.SaveChangesAsync();
             return entity;
         }
-
+        public IQueryable<T> GetQueryable()
+        {
+            return _dbSet.AsQueryable();
+        }
     }
 }

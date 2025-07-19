@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AL_Eaida_Infrastructure__Layer.Migrations
 {
     [DbContext(typeof(AppDBcontext))]
-    [Migration("20250716233138_m1")]
-    partial class m1
+    [Migration("20250719025050_data3")]
+    partial class data3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,11 +30,9 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
 
             modelBuilder.Entity("Al_Eaida_Domin.Modules.Appointment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("datetime2");
@@ -42,8 +40,8 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PatientId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -66,11 +64,9 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
 
             modelBuilder.Entity("Al_Eaida_Domin.Modules.Invoice", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -81,8 +77,8 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PatientId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PaymentMethod")
                         .IsRequired()
@@ -105,11 +101,9 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
 
             modelBuilder.Entity("Al_Eaida_Domin.Modules.InvoiceItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasPrecision(18, 2)
@@ -119,8 +113,8 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("InvoiceId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("InvoiceId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -131,11 +125,9 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
 
             modelBuilder.Entity("Al_Eaida_Domin.Modules.MedicalVisit", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Diagnosis")
                         .HasColumnType("nvarchar(max)");
@@ -143,8 +135,8 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PatientId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserID")
                         .IsRequired()
@@ -164,11 +156,9 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
 
             modelBuilder.Entity("Al_Eaida_Domin.Modules.Medicine", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("ExpirationDate")
                         .HasColumnType("datetime2");
@@ -191,11 +181,9 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
 
             modelBuilder.Entity("Al_Eaida_Domin.Modules.Patient", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -225,19 +213,17 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
 
             modelBuilder.Entity("Al_Eaida_Domin.Modules.Prescription", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETUTCDATE()");
 
-                    b.Property<int>("VisitId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("VisitId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -248,11 +234,9 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
 
             modelBuilder.Entity("Al_Eaida_Domin.Modules.PrescriptionItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Dosage")
                         .IsRequired()
@@ -262,11 +246,11 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MedicineId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("MedicineId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("PrescriptionId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PrescriptionId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -413,25 +397,25 @@ namespace AL_Eaida_Infrastructure__Layer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "13585ec0-1884-4c99-a30c-5d26a7f41792",
+                            Id = "4122e635-875b-4eaa-b69f-ba7e25ff39d1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "1650a180-0e17-4572-a6bc-e6636a8b476a",
+                            Id = "366a2914-2d46-49fa-8b66-c5078e3c793d",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         },
                         new
                         {
-                            Id = "8ffd31b6-b689-4007-91e7-4f662c28adc3",
+                            Id = "9322cadf-8600-46c6-8750-2feb6dd26090",
                             Name = "Receptionist",
                             NormalizedName = "RECEPTIONIST"
                         },
                         new
                         {
-                            Id = "dd4d8c98-1a1d-48a4-899c-b15cb7d49419",
+                            Id = "039806be-49c2-420f-9a53-2038d9df6f42",
                             Name = "Accountant ",
                             NormalizedName = "ACCOUNTANT "
                         });

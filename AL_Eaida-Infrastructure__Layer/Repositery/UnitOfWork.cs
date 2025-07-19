@@ -7,6 +7,7 @@ namespace AL_Eaida_Infrastructure__Layer.Repositery
     public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDBcontext _context;
+        private readonly Dictionary<Type, object> _repositories = new();
 
         public UnitOfWork(AppDBcontext context)
         {
@@ -25,15 +26,13 @@ namespace AL_Eaida_Infrastructure__Layer.Repositery
 
         public IGenaricRepositery<T> Repository<T>() where T : class
         {
-            // Assuming a dictionary to store repositories for different types  
-            var repositories = new Dictionary<Type, object>();
-
-            if (!repositories.ContainsKey(typeof(T)))
+            if (!_repositories.ContainsKey(typeof(T)))
             {
-                repositories[typeof(T)] = new GenaricRepositery<T>(_context);
+                var repoInstance = new GenaricRepositery<T>(_context);
+                _repositories.Add(typeof(T), repoInstance);
             }
 
-            return (IGenaricRepositery<T>)repositories[typeof(T)];
+            return (IGenaricRepositery<T>)_repositories[typeof(T)];
         }
     }
 }

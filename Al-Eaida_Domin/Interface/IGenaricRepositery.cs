@@ -10,11 +10,12 @@ namespace Al_Eaida_Domin.Interface
 {
     public interface IGenaricRepositery<T> where T : class
     {
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync(int pageNumber, int pageSize);
         Task<T?> GetByIdAsync(object id);
         Task AddAsync(T entity);
         Task<T> Update(T entity);
         Task<T> Delete(T entity);
-       
+        IQueryable<T> GetQueryable();
+
     }
 }
