@@ -9,6 +9,7 @@ namespace AL_Eaida_Infrastructure__Layer.Repositery
         private readonly AppDBcontext _context;
         private readonly Dictionary<Type, object> _repositories = new();
 
+    
         public UnitOfWork(AppDBcontext context)
         {
             _context = context;

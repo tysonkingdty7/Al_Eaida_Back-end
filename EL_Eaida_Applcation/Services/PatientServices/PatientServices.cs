@@ -59,7 +59,6 @@ namespace EL_Eaida_Applcation.Services.PatientServices
             if (patient == null)
                 return false;
 
-            // فقط نحدث الحقول غير الفارغة أو التي تم تعديلها
             if (!string.IsNullOrWhiteSpace(patients.FullName))
                 patient.FullName = patients.FullName;
 

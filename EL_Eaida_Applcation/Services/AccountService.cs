@@ -40,11 +40,9 @@ namespace EL_Eaida_Applcation.Services
                 throw new Exception("Invalid login attempt");
 
             }
-            // Generate JWT token and refresh token
-            // Assuming you have a method to generate tokens in your token repository
             var token = await _tokenRepository.GenerateToken(user);
-            var refreshToken = await _tokenRepository.GenerateToken(user); // Assuming you have a method to generate refresh tokens
-            await _tokenRepository.SaveRefreshTokenAsync(user.Id, refreshToken); // Save the refresh token in the database
+            var refreshToken = await _tokenRepository.GenerateToken(user); 
+            await _tokenRepository.SaveRefreshTokenAsync(user.Id, refreshToken); 
             return new AuthResponseDto
             {
                 Token = token,
@@ -104,7 +102,6 @@ namespace EL_Eaida_Applcation.Services
                 throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
             }
 
-            // إضافة الأدوار للمستخدم
             foreach (var role in dto.Role)
             {
                 if (await _roleManager.RoleExistsAsync(role))
