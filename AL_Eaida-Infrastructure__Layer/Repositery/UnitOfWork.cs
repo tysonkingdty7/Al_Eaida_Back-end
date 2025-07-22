@@ -35,5 +35,7 @@ namespace AL_Eaida_Infrastructure__Layer.Repositery
 
             return (IGenaricRepositery<T>)_repositories[typeof(T)];
         }
+        // Add-Repository method to get a specific repository/////
+
     }
 }

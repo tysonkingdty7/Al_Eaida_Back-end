@@ -22,7 +22,7 @@ namespace Al_Eaida_Domin.Modules
        public virtual Patient Patient { get; set; }
        public string UserID { get; set; }
 
-         public  virtual User User { get; set; }
+       public  virtual User User { get; set; }
 
     }
 }
